@@ -5,12 +5,65 @@ html(ng-app="bewd.seed")
     include ./includes/bower_bootstrap.jade
     base(href="/")
     block title
-      title BEWD Seed Project
+      title BEWD Student Portal
 
   body
     include ./includes/flash.jade
     include ./mixins/forLoggedInUser.jade
-    
+    .navbar.navbar-default.navbar-fixed-top(role='navigation')
+      .container
+        .navbar-header
+          button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(href='#') Tic to the Tac to the Toe!
+        .navbar-collapse.collapse
+          ul.nav.navbar-nav
+            li.active
+              a(href='#') Home
+            li
+              a(href='#') Register
+            li
+              a(href='#') Login
+            li.dropdown
+              a.dropdown-toggle(href='#', data-toggle='dropdown')
+                | Dropdown 
+                span.caret
+              ul.dropdown-menu(role='menu')
+                li
+                  a(href='#action') Action
+                li
+                  a(href='#anotheraction') Another action
+                li
+                  a(href='#somethingelsehere') Something else here
+                li.divider
+                li.dropdown-header Nav header
+                li
+                  a(href='#separatedlink') Separated link
+                li
+                  a(href='#anotherseparatedlink') One more separated link
+          ul.nav.navbar-nav.navbar-right
+            li
+              a(href='../navbar/') Default
+            li
+              a(href='../navbar-static-top/') Static top
+            li.active
+              a(href='./') Fixed top
+        // /.nav-collapse
     .container
-      .well
-        block content
+      // Main component for a primary marketing message or call to action
+      .jumbotron
+        h1 TicTacToe example
+        p
+          | This example is a quick exercise to illustrate how the default, static and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.
+        p To see the difference between static and fixed top navbars, just scroll.
+        p
+          a.btn.btn-lg.btn-primary(href='../../components/#navbar', role='button') View navbar docs &raquo;
+    +forLoggedInUser
+     .container
+       .alert.alert-info
+         p You are currently logged in as #{currentUser.email}
+    .container
+       block content
